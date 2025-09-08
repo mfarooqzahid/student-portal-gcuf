@@ -1,0 +1,6 @@
+portal:
+  base_url: "https://student.gcuf.edu.pk"
+  profile: "/index.php"
+  login: "/login-process.php"
+  academics: "/academics.php"
+  academics_details: "/ajax/academics-details-2020.php"
