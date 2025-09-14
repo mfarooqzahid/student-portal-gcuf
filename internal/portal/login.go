@@ -3,6 +3,7 @@ package portal
 import (
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -30,9 +31,23 @@ func (c *PortalClient) Login(username string, password string) (bool, error) {
 
 	fmt.Printf("body: %v\n", string(body))
 
-	if strings.Contains(string(body), "success index") {
+	if strings.Contains(string(body), "login-otp.php") {
+		var otp string
+		// VERIFY OTP
+		fmt.Println("enter otp")
+		fmt.Scanln(&otp)
+		ok, err := c.VerifyOtp(otp)
+		if err != nil || !ok {
+			log.Fatalf("otp failed:%v", err)
+			return false, err
+		}
+		log.Println("otp verified")
 		return true, nil
 	}
+	if strings.Contains(string(body), "index.php") {
+		return true, nil
+	}
+
 	if strings.Contains(string(body), "Username and Password wrong") {
 		return false, fmt.Errorf("invalid credentials")
 	}

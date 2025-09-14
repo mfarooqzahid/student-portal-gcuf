@@ -21,7 +21,7 @@ func main() {
 	genai := ai.NewGenAiClient()
 	client := portal.NewPortalClient(&cfg, &genai)
 
-	// TODO: add username and password before running  
+	// TODO: add username and password before running
 	// LOGIN TO PORTAL
 	username := os.Getenv("USER_NAME")
 	password := os.Getenv("PASSWORD")

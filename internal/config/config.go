@@ -12,6 +12,7 @@ type Config struct {
 		BaseURL          string `yaml:"base_url"`
 		Profile          string `yaml:"profile"`
 		Login            string `yaml:"login"`
+		VerifyOtp        string `yaml:"verify_otp"`
 		Academics        string `yaml:"academics"`
 		AcademicsDetails string `yaml:"academics_details"`
 	} `yaml:"portal"`
